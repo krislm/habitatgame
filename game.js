@@ -128,21 +128,21 @@ function component(type, x, y) {
                 if (this.age >= this.matureAge && plants.length < 150) {
                     plants.forEach((plant, index) => {
                         if (plant.id !== this.id) {
-                            let negativeX = false, negativeY = false;
+                            //let negativeX = false, negativeY = false;
                             let comparePosX = plant.x - this.x, comparePosY = plant.y - this.y;
                             if (comparePosX < 0) {
                                 comparePosX *= -1;
-                                negativeX = true
+                                //negativeX = true
                             }
                             if (comparePosY < 0) {
                                 comparePosY *= -1;
-                                negativeY = true;
+                                //negativeY = true;
                             }
-                            const chance = Math.random() > 0.75;
-                            if (comparePosX < 8 && comparePosY < 8 && chance) {
+                            const chance = Math.random() > 0.70;
+                            if (comparePosX < 10 && comparePosY < 10 && chance) {
                                 // close enough to spawn
-                                const newX = negativeX ? this.x - comparePosX : this.x + comparePosX;
-                                const newY = negativeY ? this.y - comparePosY : this.x + comparePosY;
+                                const newX = this.x - comparePosX;
+                                const newY = this.y - comparePosY;
                                 const newPlant = new component('plant', newX, newY);
                                 console.log(this.id, ' & ', plant.id, ' spawned ', newPlant.id);
                                 plants.push(newPlant);
